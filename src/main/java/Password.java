@@ -15,10 +15,7 @@ public class Password {
         boolean isMinLength = validateLength();
         boolean hasNumber = validateNumber();
         boolean hasLowerUpper = validateCase();
-        if (isMinLength && hasNumber && hasLowerUpper) {
-            return true;
-        }
-        return false;
+        return isMinLength && hasNumber && hasLowerUpper;
     }
 
     /* Check password for LENGTH */
@@ -56,11 +53,11 @@ public class Password {
         boolean chkLower = false;
         boolean chkUpper = false;
         char[] chars = this.password.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            if (Character.isLowerCase(chars[i]) == true) {
+        for (char aChar : chars) {
+            if (Character.isLowerCase(aChar)) {
                 chkLower = true;
             }
-            if (Character.isUpperCase(chars[i]) == true) {
+            if (Character.isUpperCase(aChar)) {
                 chkUpper = true;
             }
         }

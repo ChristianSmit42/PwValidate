@@ -27,8 +27,8 @@ public class AppMain {
         password6.setPassword("aaaaaa8888888");
         passwords.add(password6);
 
-        for(int i=0;i<passwords.size();i++){
-            System.out.println("Password: " +passwords.get(i).getPassword() + " valid: " + passwords.get(i).validate() + " Errors: " + passwords.get(i).errorMessage);
+        for (Password password : passwords) {
+            System.out.println("Password: " + password.getPassword() + " valid: " + password.validate() + " Errors: " + password.errorMessage);
         }
     }
 }
