@@ -1,3 +1,5 @@
+import jdk.internal.org.objectweb.asm.commons.JSRInlinerAdapter;
+
 public class Password {
 
     private  String password = "";
@@ -26,7 +28,6 @@ public class Password {
         errorMessage += " -Länge < 8- ";
         return false;
     }
-
 
     /* Check password for NUMBER */
     public boolean validateNumber() {
