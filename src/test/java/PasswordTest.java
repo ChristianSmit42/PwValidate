@@ -9,10 +9,11 @@ class PasswordTest {
     @DisplayName("Passwortlänge größer Mindestanforderung")
     public void pwValidWithLength(){
         // GIVEN
-        String pw = "123abcdefG";
+        Password pw = new Password();
+        pw.setPassword("123abcdefG");
 
         // WHEN
-        boolean result = Password.checkLength(pw);
+        boolean result = pw.validateLength();
 
         // THEN
         assertEquals(true,result);
@@ -21,10 +22,11 @@ class PasswordTest {
     @DisplayName("Passwortlänge kleiner Mindestanforderung")
     public void pwInValidWithLength(){
         // GIVEN
-        String pw = "12";
+        Password pw = new Password();
+        pw.setPassword("12");
 
         // WHEN
-        boolean result = Password.checkLength(pw);
+        boolean result = pw.validateLength();
 
         // THEN
         assertEquals(false,result);
@@ -34,10 +36,11 @@ class PasswordTest {
     @DisplayName("Passwort enthält Ziffer")
     public void pwValidWithNumber(){
         // GIVEN
-        String pw = "abcdefG6";
+        Password pw = new Password();
+        pw.setPassword("abcdefG6");
 
         // WHEN
-        boolean result = Password.checkForNumber(pw);
+        boolean result = pw.validateNumber();
 
         // THEN
         assertEquals(true,result);
@@ -47,10 +50,11 @@ class PasswordTest {
     @DisplayName("Passwort enthält keine Ziffer")
     public void pwInValidWithoutNumber(){
         // GIVEN
-        String pw = "abcdefG";
+        Password pw = new Password();
+        pw.setPassword("abcdefG");
 
         // WHEN
-        boolean result = Password.checkForNumber(pw);
+        boolean result = pw.validateNumber();
 
         // THEN
         assertEquals(false,result);
@@ -60,10 +64,11 @@ class PasswordTest {
     @DisplayName("Passwort enthält Groß- und Kleinschreibung")
     public void pwValidWithLowerUpperCase(){
         // GIVEN
-        String pw = "abcDEF";
+        Password pw = new Password();
+        pw.setPassword("abcDEF");
 
         // WHEN
-        boolean result = Password.checkCase(pw);
+        boolean result = pw.validateCase();
 
         // THEN
         assertEquals(true,result);
@@ -73,10 +78,10 @@ class PasswordTest {
     @DisplayName("Passwort enthält nur Kleinschreibung")
     public void pwInValidWithOnlyLowerCase(){
         // GIVEN
-        String pw = "abcdef";
-
+        Password pw = new Password();
+        pw.setPassword("abcdef");
         // WHEN
-        boolean result = Password.checkCase("pw");
+        boolean result = pw.validateCase();
 
         // THEN
         assertEquals(false,result);
@@ -86,10 +91,11 @@ class PasswordTest {
     @DisplayName("Passwort enthält nur Großschreibung")
     public void pwInValidWithOnlyUpperCase(){
         // GIVEN
-        String pw = "ABCDEF";
+        Password pw = new Password();
+        pw.setPassword("ABCDEF");
 
         // WHEN
-        boolean result = Password.checkCase("pw");
+        boolean result = pw.validateCase();
 
         // THEN
         assertEquals(false,result);
@@ -99,10 +105,11 @@ class PasswordTest {
     @DisplayName("Passwort enthält weder Groß- noch Kleinschreibung")
     public void pwInValidWithoutLowerUpperCase(){
         // GIVEN
-        String pw = "123456";
+        Password pw = new Password();
+        pw.setPassword("123456");
 
         // WHEN
-        boolean result = Password.checkCase("pw");
+        boolean result = pw.validateCase();
 
         // THEN
         assertEquals(false,result);
